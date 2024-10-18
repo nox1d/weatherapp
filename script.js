@@ -11,12 +11,18 @@ async function fetchData(city) {
 
         const data = await response.json();
         console.log(data);
-        
+
         let country = data.location.country;
         let name = data.location.name;
         let region = data.location.region;
         let localtime = data.location.localtime;
-        showData(country, name, region, localtime);
+
+        let icon = data.current.condition.icon;
+        let condition = data.current.condition.text;
+        let temp_c = data.current.temp_c;
+        let temp_f = data.current.temp_f;
+
+        showData(country, name, region, localtime, icon, condition, temp_c, temp_f);
     }
     catch(error) {
         console.error(error);
@@ -30,14 +36,21 @@ function findCity() {
     document.getElementById("city").value = "";
 }
 
-function showData(country, name, region, localtime) {
+function showData(country, name, region, localtime, icon, condition, temp_c, temp_f) {
     const dataContainer = document.getElementById("data_container");
+    const data = dataContainer.querySelector("#data");
+    const img = dataContainer.querySelector("#weather_icon");
+
     let content = `
+    <p>${condition}</p>
+    <p>Temperature: ${temp_c} Celcius / ${temp_f} Fahrenheit</p>
     <p>Country: ${country}</p>
     <p>City: ${name}</p>
     <p>Region: ${region}</p>
     <p>Local time: ${localtime}</p>
     `;
 
-    dataContainer.innerHTML = content;
+    img.src = icon;
+    img.style.display = "block";
+    data.innerHTML = content;
 }
