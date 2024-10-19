@@ -1,7 +1,7 @@
 const key = "f3092f685da845638d070036241610";
 const weatherForm = document.querySelector(".weather_form");
 const cityInput = document.querySelector("#city_input");
-const card = document.querySelector(".card");
+const card = document.querySelector("#card");
 
 
 weatherForm.addEventListener("submit", async event => {
@@ -12,7 +12,7 @@ weatherForm.addEventListener("submit", async event => {
     if (city) {
         try {
             const weatherData = await fetchData(city);
-            // displayData(weatherData);
+            displayData(weatherData);
             console.log(weatherData);
         }
         catch(error) {
@@ -48,7 +48,7 @@ function displayData(data) {
     const img = card.querySelector("#weather_icon");
     const conditionDiv = card.querySelector("#condition");
     const cityDiv = card.querySelector("#city_name");
-    const tempDiv = card.querySelector("temperature");
+    const tempDiv = card.querySelector("#temperature");
 
     img.src = icon;
     img.style.display = "block";
@@ -62,6 +62,6 @@ function displayData(data) {
 function displayError(message) {
     const errorDisplay = document.createElement("p");
     errorDisplay.textContent = message;
-    card.appendChild(errorDisplay)
+    card.appendChild(errorDisplay);
 
 }
