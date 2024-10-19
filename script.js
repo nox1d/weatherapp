@@ -63,6 +63,7 @@ function displayData(data) {
 
 function displayError(message) {
     const errorDisplay = document.createElement("p");
+    errorDisplay.classList.add("error_display")
     errorDisplay.textContent = message;
     card.appendChild(errorDisplay);
 
