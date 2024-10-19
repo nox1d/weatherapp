@@ -43,12 +43,13 @@ async function fetchData(city) {
 }
 
 function displayData(data) {
-    const {location: {name, country, region, localtime}, current: {condition: {icon, text}, humidity, temp_c}} = data;
+    const {location: {name, country, region}, current: {condition: {icon, text}, humidity, temp_c}} = data;
 
     const img = card.querySelector("#weather_icon");
     const conditionDiv = card.querySelector("#condition");
     const cityDiv = card.querySelector("#city_name");
     const tempDiv = card.querySelector("#temperature");
+    const countryRegion = card.querySelector("#country_region");
 
     img.src = icon;
     img.style.display = "block";
@@ -56,6 +57,7 @@ function displayData(data) {
     conditionDiv.textContent = text;
     cityDiv.textContent = name;
     tempDiv.textContent = `${temp_c}°C`;
+    countryRegion.textContent = `${country} | ${region}`;
     // data.innerHTML = content;
 }
 
