@@ -63,7 +63,7 @@
     width: 400px;
     height: 600px;
     margin: 1rem;
-    border: 2px solid #000;
+    filter: drop-shadow(.6rem .8rem 8px #c4c4c4);
     border-radius: 1.8rem;
     background: rgb(111,208,255);
     background: linear-gradient(0deg, rgba(111,208,255,1) 14%, rgba(255,248,134,1) 100%);
