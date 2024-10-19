@@ -68,3 +68,17 @@
     background: rgb(111,208,255);
     background: linear-gradient(0deg, rgba(111,208,255,1) 14%, rgba(255,248,134,1) 100%);
   }
+
+  #condition, #country_region {
+    font-size: .75rem;
+  }
+
+  #city_name {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  #temperature {
+    font-size: 3rem;
+    font-weight: 600;
+  }
