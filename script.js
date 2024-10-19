@@ -11,6 +11,9 @@ weatherForm.addEventListener("submit", async event => {
 
     if (city) {
         try {
+            console.log(card.children);
+            let errorDisplays = card.querySelectorAll(".error_display");
+            errorDisplays.forEach(child => card.removeChild(child));
             const weatherData = await fetchData(city);
             displayData(weatherData);
             console.log(weatherData);
