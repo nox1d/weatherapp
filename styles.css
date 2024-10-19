@@ -1,0 +1,70 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+  }
+  
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .weather_form > input {
+    width: 16rem;
+    height: 2.5rem;
+    border-radius: .5rem;
+    padding: .2rem;
+  }
+
+  .weather_form > button {
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: .5rem;
+  }
+
+  #card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 600px;
+    margin: 1rem;
+    border: 2px solid #000;
+    border-radius: 1.8rem;
+    background: rgb(111,208,255);
+    background: linear-gradient(0deg, rgba(111,208,255,1) 14%, rgba(255,248,134,1) 100%);
+  }
