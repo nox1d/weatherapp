@@ -8,12 +8,16 @@
 </head>
 <body>
     <div class="container" id="main_container">
-        <label for="city">Enter a city name:</label>
-        <input type="text" name="city" id="city"/>
-        <button class="button" id="findbtn" onclick="findCity()">Look Up</button>
-        <div class="data_container" id="data_container">
+        <form class="weather_form">
+            <input type="text" name="city" id="city_input" placeholder="Enter city"/>
+            <button type="submit" class="button" id="findbtn">Get Weather</button>
+        </form>
+        <div id="card">
             <img src="" alt="Weather Icon" id="weather_icon" style="display: none;">
-            <div id="data"></div>
+            <div id="condition"></div>
+            <div id="city_name"></div>
+            <div id="temperature"></div>
+            <div class="other_data"></div>
         </div>
     </div>
     

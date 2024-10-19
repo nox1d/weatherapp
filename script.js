@@ -1,56 +1,67 @@
 const key = "f3092f685da845638d070036241610";
+const weatherForm = document.querySelector(".weather_form");
+const cityInput = document.querySelector("#city_input");
+const card = document.querySelector(".card");
+
+
+weatherForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const city = cityInput.value;
+
+    if (city) {
+        try {
+            const weatherData = await fetchData(city);
+            // displayData(weatherData);
+            console.log(weatherData);
+        }
+        catch(error) {
+            displayError(error);
+            console.error(error);
+        }
+    }
+})
 
 
 async function fetchData(city) {
-    try {
-        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`);
+    const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`);
 
-        if (!response.ok) {
-            throw new Error("Could not fetch resource");
-        }
-
-        const data = await response.json();
-        console.log(data);
-
-        let country = data.location.country;
-        let name = data.location.name;
-        let region = data.location.region;
-        let localtime = data.location.localtime;
-
-        let icon = data.current.condition.icon;
-        let condition = data.current.condition.text;
-        let temp_c = data.current.temp_c;
-        let temp_f = data.current.temp_f;
-
-        showData(country, name, region, localtime, icon, condition, temp_c, temp_f);
+    if (!response.ok) {
+        throw new Error("Could not fetch resource");
     }
-    catch(error) {
-        console.error(error);
-    }
+
+    return await response.json();
+
+        // let country = data.location.country;
+        // let name = data.location.name;
+        // let region = data.location.region;
+        // let localtime = data.location.localtime;
+
+        // let icon = data.current.condition.icon;
+        // let condition = data.current.condition.text;
+        // let temp_c = data.current.temp_c;
 }
 
+function displayData(data) {
+    const {location: {name, country, region, localtime}, current: {condition: {icon, text}, humidity, temp_c}} = data;
 
-function findCity() {
-    const city = document.getElementById("city").value;
-    fetchData(city);
-    document.getElementById("city").value = "";
-}
-
-function showData(country, name, region, localtime, icon, condition, temp_c, temp_f) {
-    const dataContainer = document.getElementById("data_container");
-    const data = dataContainer.querySelector("#data");
-    const img = dataContainer.querySelector("#weather_icon");
-
-    let content = `
-    <p>${condition}</p>
-    <p>Temperature: ${temp_c} Celcius / ${temp_f} Fahrenheit</p>
-    <p>Country: ${country}</p>
-    <p>City: ${name}</p>
-    <p>Region: ${region}</p>
-    <p>Local time: ${localtime}</p>
-    `;
+    const img = card.querySelector("#weather_icon");
+    const conditionDiv = card.querySelector("#condition");
+    const cityDiv = card.querySelector("#city_name");
+    const tempDiv = card.querySelector("temperature");
 
     img.src = icon;
     img.style.display = "block";
-    data.innerHTML = content;
+
+    conditionDiv.textContent = text;
+    cityDiv.textContent = name;
+    tempDiv.textContent = temp_c;
+    // data.innerHTML = content;
+}
+
+function displayError(message) {
+    const errorDisplay = document.createElement("p");
+    errorDisplay.textContent = message;
+    card.appendChild(errorDisplay)
+
 }
