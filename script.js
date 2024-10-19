@@ -55,7 +55,7 @@ function displayData(data) {
 
     conditionDiv.textContent = text;
     cityDiv.textContent = name;
-    tempDiv.textContent = temp_c;
+    tempDiv.textContent = `${temp_c}°C`;
     // data.innerHTML = content;
 }
 
