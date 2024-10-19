@@ -53,6 +53,7 @@ function displayData(data) {
     const cityDiv = card.querySelector("#city_name");
     const tempDiv = card.querySelector("#temperature");
     const countryRegion = card.querySelector("#country_region");
+    const humidityDiv = card.querySelector("#humidity");
 
     img.src = icon;
     img.style.display = "block";
@@ -61,6 +62,7 @@ function displayData(data) {
     cityDiv.textContent = name;
     tempDiv.textContent = `${temp_c}°C`;
     countryRegion.textContent = `${country} | ${region}`;
+    humidityDiv.textContent = `Humidity: ${humidity}%`;
     // data.innerHTML = content;
 }
 

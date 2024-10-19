@@ -69,7 +69,7 @@
     background: linear-gradient(0deg, rgba(111,208,255,1) 14%, rgba(255,248,134,1) 100%);
   }
 
-  #condition, #country_region {
+  #condition, #country_region, #humidity {
     font-size: .75rem;
   }
 
